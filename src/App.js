@@ -1,23 +1,15 @@
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      HEADER component
+
+      CURRENT MATCH component
+      team component --- home team - score, visiting team - score
+
+      LIVE MATCH LIST component
+      team component --- matches sorted by highest score, and later by match duration
     </div>
   );
 }
