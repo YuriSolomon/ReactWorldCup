@@ -1,7 +1,25 @@
+import NewMatch from "./NewMatch";
+
 import { useState } from "react";
 
 export default function AllMatches() {
     const [matchList, setMatchList] = useState([]);
+
+    function handleCreate(homeTeam, guestTeam) {
+        setMatchList(prevMatchList => {
+            const updatedMatchList = [
+                {
+                    duration: 0,
+                    active: true,
+                    selected: true,
+                    homeTeam: {name: homeTeam, score: 0},
+                    guestTeam: {name: guestTeam, score: 0}
+                },
+                ...prevMatchList
+            ];
+            return updatedMatchList;
+        })
+    }
 
     return (
         <div id="match-list">
@@ -12,9 +30,7 @@ export default function AllMatches() {
                 inputs scores
                 submit button
 
-            START NEW MATCH
-                inputs teams and score
-                submit button
+            <NewMatch onCreate={handleCreate} />
 
             LIVE MATCH LIST component
                 team component --- matches sorted by highest score, and later by match duration
