@@ -8,6 +8,13 @@ export default function AllMatches() {
 
     function handleCreate(homeTeam, guestTeam) {
         setMatchList(prevMatchList => {
+            const updatedListDuration = prevMatchList.map(match => {
+                return {
+                    ...match,
+                    duration: match.duration + 1,
+                    selected: false
+                }
+            } )
             const updatedMatchList = [
                 {
                     duration: 0,
@@ -16,8 +23,9 @@ export default function AllMatches() {
                     homeTeam: {name: homeTeam, score: 0},
                     guestTeam: {name: guestTeam, score: 0}
                 },
-                ...prevMatchList
+                ...updatedListDuration
             ];
+            console.log(updatedMatchList)
             return updatedMatchList;
         })
     }
