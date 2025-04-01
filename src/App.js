@@ -5,11 +5,21 @@ function App() {
     <div className="App">
       HEADER component
 
-      CURRENT MATCH component
-      team component --- home team - score, visiting team - score
+      WRAPPER
+        CURRENT MATCH component
+          team component --- home team - score, visiting team - score
+          finish match button
+          UPDATE CURRENT MATCH
+            inputs scores
+            submit button
 
-      LIVE MATCH LIST component
-      team component --- matches sorted by highest score, and later by match duration
+        START NEW MATCH
+          inputs teams and score
+          submit button
+
+        LIVE MATCH LIST component
+          team component --- matches sorted by highest score, and later by match duration
+      /Wrapper
     </div>
   );
 }
