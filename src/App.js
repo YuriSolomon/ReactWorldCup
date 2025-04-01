@@ -1,9 +1,11 @@
+import Header from './Components/Header';
+
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      HEADER component
+      <Header />
 
       WRAPPER
         CURRENT MATCH component
