@@ -3,7 +3,7 @@ import Input from "./Input";
 import { useState } from "react";
 
 export default function NewMatch({onCreate}) {
-    const [inputValues, setInputValues] = useState({homeTeam: '', guestTeam: ''});
+    const [inputValues, setInputValues] = useState({homeTeam: 'Team 1', guestTeam: 'Team 2'});
 
     function handleChange(key ,value) {
         setInputValues(prevInputValues => {
@@ -15,7 +15,7 @@ export default function NewMatch({onCreate}) {
     }
 
     function handleClick() {
-        setInputValues(() => {return {homeTeam: '', guestTeam: ''}});
+        setInputValues(() => {return {homeTeam: 'Team 1', guestTeam: 'Team 2'}});
         onCreate(inputValues.homeTeam, inputValues.guestTeam);
     }
 

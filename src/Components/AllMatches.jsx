@@ -25,7 +25,6 @@ export default function AllMatches() {
                 },
                 ...updatedListDuration
             ];
-            console.log(updatedMatchList)
             return updatedMatchList;
         })
     }
