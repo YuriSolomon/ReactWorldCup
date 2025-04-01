@@ -1,4 +1,5 @@
 import NewMatch from "./NewMatch";
+import MatchList from "./MatchList";
 
 import { useState } from "react";
 
@@ -31,6 +32,8 @@ export default function AllMatches() {
                 submit button
 
             <NewMatch onCreate={handleCreate} />
+            
+            <MatchList matchList={matchList} />
 
             LIVE MATCH LIST component
                 team component --- matches sorted by highest score, and later by match duration
