@@ -16,8 +16,8 @@ I am sure this project will not have the best results, the most efficiant code, 
 solutions. But I hope chosing react for this will show the potencial I have.
 
 I found an issue with testing library.
-userEvent.type(input, 'value');    is not working and not updating the value.
-fireEvent.change(input, {target: {value: 'example'}});    also didn't work.
+`userEvent.type(input, 'value');` is not working and not updating the value.
+`fireEvent.change(input, {target: {value: 'example'}});` also didn't work.
 I have tried to upgrade testing-library/user-event to V14.6.1 with no success.
 I have tried playing with several testing libraries versions with no success.
 This caused me to rethink my appproach and change it.
