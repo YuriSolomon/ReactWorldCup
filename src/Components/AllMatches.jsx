@@ -3,8 +3,32 @@ import MatchList from "./MatchList";
 
 import { useState } from "react";
 
+const initialMatches = [
+    {
+        duration: 0,
+        active: true,
+        selected: true,
+        homeTeam: {name: 'Spain', score: 6},
+        guestTeam: {name: 'Brazil', score: 6}
+    },
+    {
+        duration: 1,
+        active: true,
+        selected: true,
+        homeTeam: {name: 'Uruguay', score: 2},
+        guestTeam: {name: 'Italy', score: 10}
+    },
+    {
+        duration: 2,
+        active: true,
+        selected: true,
+        homeTeam: {name: 'Mexico', score: 6},
+        guestTeam: {name: 'Canada', score: 10}
+    }
+]
+
 export default function AllMatches() {
-    const [matchList, setMatchList] = useState([]);
+    const [matchList, setMatchList] = useState(initialMatches);
 
     function handleCreate(homeTeam, guestTeam) {
         setMatchList(prevMatchList => {
