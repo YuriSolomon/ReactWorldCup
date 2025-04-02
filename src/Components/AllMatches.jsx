@@ -68,9 +68,24 @@ export default function AllMatches() {
         })
     }
 
+    function handleUpdate(match) {
+        setMatchList(prevMatchList => {
+            const updatedListScore = prevMatchList.map(match => {
+                return {
+                    ...match,
+                    duration: match.duration + 1,
+                    selected: false,
+                    homeTeam: {name: match.homeTeam.name, score: match.homeTeam.score},
+                    guestTeam: {name: match.guestTeam.name, score: match.guestTeam.score}
+                }
+            } )
+            return updatedListScore;
+        })
+    }
+
     return (
         <div id="match-list">
-            <Currentmatch match={selectedMatch} />
+            <Currentmatch onUpdate={handleUpdate} match={selectedMatch} />
             <NewMatch onCreate={handleCreate} />
             <MatchList matchList={matchList} />
         </div>
