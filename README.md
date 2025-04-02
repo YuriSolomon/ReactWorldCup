@@ -15,6 +15,16 @@ buidling my knowledge up.
 I am sure this project will not have the best results, the most efficiant code, or the best
 solutions. But I hope chosing react for this will show the potencial I have.
 
+I found an issue with testing library.
+userEvent.type(input, 'value');    is not working and not updating the value.
+fireEvent.change(input, {target: {value: 'example'}});    also didn't work.
+I have tried to upgrade testing-library/user-event to V14.6.1 with no success.
+I have tried playing with several testing libraries versions with no success.
+This caused me to rethink my appproach and change it.
+However, due to the requirement to give a pair of absolut scores to update score,
+I have to keep the input fields and cannot change to a button that will increment the score.
+Thus, the test for updating score will be commented out. I will however put a comment in the code,
+to hard code input values in order to run this test. This is not a good practice, but with the testing issues there is not much else I can do.
 
 # Instructions:
 
