@@ -57,6 +57,7 @@ test('finish a game', () => {
   const finishButton = screen.getByLabelText('Finish Match');
   userEvent.click(finishButton);
   expect(screen.getByText('Spain: 6 - Brazil: 6')).not.toBeInTheDocument(); // change expected test after creating current match component
+  expect(screen.getByText('Home team: Spain: 6 VS. Guest team: Brazil: 6')).not.toBeInTheDocument(); // change expected test after creating current match component
 });
 
 // for the next 2 tests I created the sample data in an order than needs to be sorted

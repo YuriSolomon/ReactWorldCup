@@ -1,5 +1,6 @@
 import NewMatch from "./NewMatch";
 import MatchList from "./MatchList";
+import Currentmatch from "./CurrentMatch";
 
 import { useState } from "react";
 
@@ -25,10 +26,24 @@ const initialMatches = [
         homeTeam: {name: 'Mexico', score: 6},
         guestTeam: {name: 'Canada', score: 10}
     }
-]
+];
+
+function findSelectedMatch(matchList) {
+    let selectedMatch;
+    for (let i = 0; i < matchList.length; i++) {
+        const match = matchList[i];
+        if (match.selected) {
+            selectedMatch = match;
+            break;
+        }
+    };
+    return selectedMatch;
+}
 
 export default function AllMatches() {
     const [matchList, setMatchList] = useState(initialMatches);
+
+    const selectedMatch = findSelectedMatch(matchList);
 
     function handleCreate(homeTeam, guestTeam) {
         setMatchList(prevMatchList => {
@@ -55,19 +70,9 @@ export default function AllMatches() {
 
     return (
         <div id="match-list">
-            CURRENT MATCH component
-                team component --- home team - score, visiting team - score
-                finish match button
-            UPDATE CURRENT MATCH
-                inputs scores
-                submit button
-
+            <Currentmatch match={selectedMatch} />
             <NewMatch onCreate={handleCreate} />
-            
             <MatchList matchList={matchList} />
-
-            LIVE MATCH LIST component
-                team component --- matches sorted by highest score, and later by match duration
         </div>
     )
 }
