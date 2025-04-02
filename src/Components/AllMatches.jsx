@@ -9,22 +9,22 @@ const initialMatches = [
         duration: 0,
         active: true,
         selected: true,
-        homeTeam: {name: 'Spain', score: 6},
-        guestTeam: {name: 'Brazil', score: 6}
+        homeTeam: { name: 'Spain', score: 6 },
+        guestTeam: { name: 'Brazil', score: 6 }
     },
     {
         duration: 1,
         active: true,
-        selected: true,
-        homeTeam: {name: 'Uruguay', score: 2},
-        guestTeam: {name: 'Italy', score: 10}
+        selected: false,
+        homeTeam: { name: 'Uruguay', score: 2 },
+        guestTeam: { name: 'Italy', score: 10 }
     },
     {
         duration: 2,
         active: true,
-        selected: true,
-        homeTeam: {name: 'Mexico', score: 6},
-        guestTeam: {name: 'Canada', score: 10}
+        selected: false,
+        homeTeam: { name: 'Mexico', score: 6 },
+        guestTeam: { name: 'Canada', score: 10 }
     }
 ];
 
@@ -53,14 +53,14 @@ export default function AllMatches() {
                     duration: match.duration + 1,
                     selected: false
                 }
-            } )
+            })
             const updatedMatchList = [
                 {
                     duration: 0,
                     active: true,
                     selected: true,
-                    homeTeam: {name: homeTeam, score: 0},
-                    guestTeam: {name: guestTeam, score: 0}
+                    homeTeam: { name: homeTeam, score: 0 },
+                    guestTeam: { name: guestTeam, score: 0 }
                 },
                 ...updatedListDuration
             ];
@@ -70,15 +70,14 @@ export default function AllMatches() {
 
     function handleUpdate(match) {
         setMatchList(prevMatchList => {
-            const updatedListScore = prevMatchList.map(match => {
+            const updatedListScore = prevMatchList.map(matchItem => {
                 return {
-                    ...match,
-                    duration: match.duration + 1,
-                    selected: false,
-                    homeTeam: {name: match.homeTeam.name, score: match.homeTeam.score},
-                    guestTeam: {name: match.guestTeam.name, score: match.guestTeam.score}
+                    ...matchItem,
+                    duration: matchItem.duration + 1,
+                    homeTeam: { name: matchItem.homeTeam.name, score: (matchItem.homeTeam.name === match.homeTeam.name ? match.homeTeam.score : matchItem.homeTeam.score) },
+                    guestTeam: { name: matchItem.guestTeam.name, score: (matchItem.guestTeam.name === match.guestTeam.name ? match.guestTeam.score : matchItem.guestTeam.score) }
                 }
-            } )
+            })
             return updatedListScore;
         })
     }
