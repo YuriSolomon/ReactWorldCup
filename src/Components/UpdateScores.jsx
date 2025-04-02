@@ -31,7 +31,7 @@ export default function UpdateScores({onUpdate, match}) {
         <div id="new-match">
             <Input label='Home team score' type="number" title='homeTeamScore' value={inputValues.homeTeam.score} onChange={(event) => handleChange('homeTeam', event.target.value)} />
             <Input label='Guest team score' type="number" title='guestTeamScore' value={inputValues.guestTeam.score} onChange={(event) => handleChange('guestTeam', event.target.value)} />
-            <button onClick={() => handleClick()}>Create new match</button>
+            <button onClick={() => handleClick()}>Update match</button>
         </div>
     )
 }
