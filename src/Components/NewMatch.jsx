@@ -15,8 +15,10 @@ export default function NewMatch({onCreate}) {
     }
 
     function handleClick() {
-        setInputValues(() => {return {homeTeam: 'Team 1', guestTeam: 'Team 2'}});
-        onCreate(inputValues.homeTeam, inputValues.guestTeam);
+        if (inputValues.homeTeam !== '' && inputValues.guestTeam !== '' && inputValues.homeTeam !== inputValues.guestTeam) {
+            setInputValues(() => { return { homeTeam: '', guestTeam: '' } });
+            onCreate(inputValues.homeTeam, inputValues.guestTeam);
+        }
     }
 
     return (
