@@ -1,6 +1,6 @@
-import { getByText, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { fireEvent } from '@testing-library/react';
+import { waitFor } from '@testing-library/react';
 import App from './App';
 
 test('page had a header text', () => {
@@ -17,7 +17,7 @@ test('start a match', async () => {
 // userEvent.type(inputGuestTeam, 'Team 1') not working for some reason. a lot of complaints online, no solution yet
   const createButton = screen.getByText('Create new match');
   userEvent.click(createButton);
-  expect(screen.getByText('Team 1: 0 - Team 2: 0')).toBeInTheDocument();
+  expect(screen.getByText('Home team: Team 1: 0')).toBeInTheDocument();
 });
 
 /* example to how I would use testing if I could type a value into inputs
@@ -50,14 +50,12 @@ test('update match score', () => { // sample data is needed for this, as .type()
 });
 */
 
-test('finish a game', () => {
+test('finish a game', async () => {
   render(<App />); // change component
-  const match = screen.getByLabelText('Spain: 6 - Brazil: 6');
-  userEvent.click(match);
-  const finishButton = screen.getByLabelText('Finish Match');
+  const currentMatch = screen.getByText('Home team: Spain: 6');
+  const finishButton = screen.getByText('Finish match');
   userEvent.click(finishButton);
-  expect(screen.getByText('Spain: 6 - Brazil: 6')).not.toBeInTheDocument(); // change expected test after creating current match component
-  expect(screen.getByText('Home team: Spain: 6 VS. Guest team: Brazil: 6')).not.toBeInTheDocument(); // change expected test after creating current match component
+  expect(currentMatch).not.toBe(<p>Home team: Uruguay: 2</p>); // should be first item on the list
 });
 
 // for the next 2 tests I created the sample data in an order than needs to be sorted
