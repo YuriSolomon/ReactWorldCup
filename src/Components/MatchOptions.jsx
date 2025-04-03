@@ -1,12 +1,10 @@
 import UpdateScores from "./UpdateScores";
 
-export default function MatchOptions({onUpdate, match}) {
+export default function MatchOptions({onUpdate, match, onFinish}) {
     return (
         <>
             <UpdateScores onUpdate={onUpdate} match={match}/>
-            inputs scores
-            submit button
-            finish match button
+            <button onClick={() => onFinish(match)}>Finish match</button>
         </>
     )
 }

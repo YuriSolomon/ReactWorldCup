@@ -74,17 +74,39 @@ export default function AllMatches() {
                 return {
                     ...matchItem,
                     duration: matchItem.duration + 1,
-                    homeTeam: { name: matchItem.homeTeam.name, score: (matchItem.homeTeam.name === match.homeTeam.name ? match.homeTeam.score : matchItem.homeTeam.score) },
-                    guestTeam: { name: matchItem.guestTeam.name, score: (matchItem.guestTeam.name === match.guestTeam.name ? match.guestTeam.score : matchItem.guestTeam.score) }
+                    homeTeam: { ...matchItem.homeTeam, score: (matchItem.homeTeam.name === match.homeTeam.name ? match.homeTeam.score : matchItem.homeTeam.score) },
+                    guestTeam: { ...matchItem.guestTeam, score: (matchItem.guestTeam.name === match.guestTeam.name ? match.guestTeam.score : matchItem.guestTeam.score) }
                 }
             })
             return updatedListScore;
         })
     }
 
+    function handleFinish(match) {
+        setMatchList(prevMatchList => {
+            let updatedListActive = prevMatchList.map(matchItem => {
+                let activeState = matchItem.active;
+                return {
+                    ...matchItem,
+                    selected: false,
+                    active: (match.homeTeam.name === matchItem.homeTeam.name ? false : activeState),
+                    duration: matchItem.duration + 1,
+                }
+            })
+            for (let i = 0; i < updatedListActive.length; i++) {
+                const matchItem = updatedListActive[i];
+                if (matchItem.active) {
+                    matchItem.selected = true;
+                    break;
+                }
+            }
+            return updatedListActive;
+        })
+    }
+
     return (
         <div id="match-list">
-            <Currentmatch onUpdate={handleUpdate} match={selectedMatch} />
+            <Currentmatch onUpdate={handleUpdate} match={selectedMatch} onFinish={handleFinish} />
             <NewMatch onCreate={handleCreate} />
             <MatchList matchList={matchList} />
         </div>
