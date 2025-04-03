@@ -1,10 +1,13 @@
 import Team from "./Team";
 
 export default function MatchList({ matchList, onSelect }) {
-    // TO DO: sort list items by total score first, and later by duration
+    const sortedMatches = matchList.sort((a, b) =>
+        (b.homeTeam.score + b.guestTeam.score) - (a.homeTeam.score + a.guestTeam.score) || b.duration.toString().localeCompare(a.duration.toString())
+    );
+
     return (
         <ol id="match-list">
-            {matchList.map((match, index) => (
+            {sortedMatches.map((match, index) => (
                 <span key={index}>
                     {(match.active && !match.selected) && (
                         <li>
