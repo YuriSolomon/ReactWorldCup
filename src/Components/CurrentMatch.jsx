@@ -1,7 +1,7 @@
 import Team from "./Team";
 import MatchOptions from "./MatchOptions";
 
-export default function Currentmatch({ onUpdate, match, onFinish }) {
+export default function CurrentMatch({ onUpdate, match, onFinish }) {
     return (
         <>
             {match && (<div id="current-match">

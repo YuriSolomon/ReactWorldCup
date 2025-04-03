@@ -1,6 +1,6 @@
 import Team from "./Team";
 
-export default function MatchList({ matchList }) {
+export default function MatchList({ matchList, onSelect }) {
     // TO DO: sort list items by total score first, and later by duration
     return (
         <ol id="match-list">
@@ -8,7 +8,9 @@ export default function MatchList({ matchList }) {
                 <span key={index}>
                     {(match.active && !match.selected) && (
                         <li>
-                            <Team team={match.homeTeam} /> - <Team team={match.guestTeam} />
+                            <button onClick={(event) => onSelect(match)}>
+                                <Team team={match.homeTeam} /> - <Team team={match.guestTeam} />
+                            </button>
                         </li>
                     )}
                 </span>

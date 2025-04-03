@@ -1,6 +1,6 @@
 import NewMatch from "./NewMatch";
 import MatchList from "./MatchList";
-import Currentmatch from "./CurrentMatch";
+import CurrentMatch from "./CurrentMatch";
 
 import { useState } from "react";
 
@@ -71,14 +71,29 @@ export default function AllMatches() {
     function handleUpdate(match) {
         setMatchList(prevMatchList => {
             const updatedListScore = prevMatchList.map(matchItem => {
+                // checking if both teams are the same, while currently a team can have 2 active games, the combination of both teams should be unique
+                const matchesFit = matchItem.homeTeam.name === match.homeTeam.name && matchItem.guestTeam.name === match.guestTeam.name;
                 return {
                     ...matchItem,
                     duration: matchItem.duration + 1,
-                    homeTeam: { ...matchItem.homeTeam, score: (matchItem.homeTeam.name === match.homeTeam.name ? match.homeTeam.score : matchItem.homeTeam.score) },
-                    guestTeam: { ...matchItem.guestTeam, score: (matchItem.guestTeam.name === match.guestTeam.name ? match.guestTeam.score : matchItem.guestTeam.score) }
+                    homeTeam: { ...matchItem.homeTeam, score: (matchesFit ? match.homeTeam.score : matchItem.homeTeam.score) },
+                    guestTeam: { ...matchItem.guestTeam, score: (matchesFit ? match.guestTeam.score : matchItem.guestTeam.score) }
                 }
             })
             return updatedListScore;
+        })
+    }
+
+    function updateSelect(match) {
+        setMatchList(prevMatchList => {
+            let updatedListSelected = prevMatchList.map(matchItem => {
+                return {
+                    ...matchItem,
+                    selected: (matchItem === match ? true : false),
+                    duration: matchItem.duration + 1,
+                }
+            })
+            return updatedListSelected;
         })
     }
 
@@ -89,7 +104,7 @@ export default function AllMatches() {
                 return {
                     ...matchItem,
                     selected: false,
-                    active: (match.homeTeam.name === matchItem.homeTeam.name ? false : activeState),
+                    active: (match === matchItem ? false : activeState),
                     duration: matchItem.duration + 1,
                 }
             })
@@ -106,9 +121,9 @@ export default function AllMatches() {
 
     return (
         <div id="match-list">
-            <Currentmatch onUpdate={handleUpdate} match={selectedMatch} onFinish={handleFinish} />
-            <NewMatch onCreate={handleCreate} />
-            <MatchList matchList={matchList} />
+            <CurrentMatch onUpdate={handleUpdate} match={selectedMatch} onFinish={handleFinish} />
+            <NewMatch onCreate={handleCreate} matchList={matchList} />
+            <MatchList matchList={matchList} onSelect={updateSelect} />
         </div>
     )
 }
