@@ -60,13 +60,22 @@ test('finish a game', async () => {
 
 // for the next 2 tests I created the sample data in an order than needs to be sorted
 // thus those will only pass if data is sorted correctly
+// toBe(4) - after adding the button, the elements are no siblings but children of siblings, this the number changed from 2 to 4
 
 test('sort matches by score', () => {
   render(<App />);
-  expect('Mexico: 6 - Canada: 10'.compareDocumentPosition('Spain: 6 - Brazil: 6')).toBe(2);
+  const createButton = screen.getByText('Create new match');
+  userEvent.click(createButton);
+  const match1 = screen.getByText('Mexico: 6 - Canada: 10');
+  const match2 = screen.getByText('Spain: 6 - Brazil: 6');
+  expect(match1.compareDocumentPosition(match2)).toBe(4);
 });
 
 test('sort matches by time', () => {
   render(<App />);
-  expect('Uruguay: 2 - Italy: 10'.compareDocumentPosition('Spain: 6 - Brazil: 6')).toBe(2);
+  const createButton = screen.getByText('Create new match');
+  userEvent.click(createButton);
+  const match1 = screen.getByText('Uruguay: 2 - Italy: 10');
+  const match2 = screen.getByText('Spain: 6 - Brazil: 6');
+  expect(match1.compareDocumentPosition(match2)).toBe(4);
 });
