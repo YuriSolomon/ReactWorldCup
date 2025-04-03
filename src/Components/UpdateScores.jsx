@@ -1,21 +1,28 @@
 import Input from "./Input";
 
+import React from "react";
 import { useState } from "react";
 
-export default function UpdateScores({onUpdate, match}) {
-    const initialScore = {homeTeam: {name: match.homeTeam.name ,score: match.homeTeam.score}, guestTeam: {name: match.guestTeam.name, score: match.guestTeam.score}}
+export default function UpdateScores({ onUpdate, match }) {
+    const initialScore = { homeTeam: { name: match.homeTeam.name, score: match.homeTeam.score }, guestTeam: { name: match.guestTeam.name, score: match.guestTeam.score } }
     const [inputValues, setInputValues] = useState(initialScore);
-    function handleChange(key ,value) {
+
+    // force state to update on match change
+    React.useEffect(() => {
+        setInputValues(initialScore);
+    }, [match]);
+
+    function handleChange(key, value) {
         setInputValues(prevInputValues => {
             if (key === 'homeTeam') {
                 return {
                     ...prevInputValues,
-                    homeTeam: {...prevInputValues.homeTeam ,score: +value}
+                    homeTeam: { ...prevInputValues.homeTeam, score: +value }
                 }
             } else {
                 return {
                     ...prevInputValues,
-                    guestTeam: {...prevInputValues.guestTeam ,score: +value}
+                    guestTeam: { ...prevInputValues.guestTeam, score: +value }
                 }
             }
         })
