@@ -4,7 +4,9 @@ import React from "react";
 import { useState } from "react";
 
 export default function UpdateScores({ onUpdate, match }) {
-    const initialScore = { homeTeam: { name: match.homeTeam.name, score: match.homeTeam.score }, guestTeam: { name: match.guestTeam.name, score: match.guestTeam.score } }
+    const initialScore = { homeTeam: { name: match.homeTeam.name, score: match.homeTeam.score }, guestTeam: { name: match.guestTeam.name, score: match.guestTeam.score } };
+    // comment line 7 and uncomment line 9 to run update scores test
+    // const initialScore = { homeTeam: { name: match.homeTeam.name, score: match.homeTeam.score+1 }, guestTeam: { name: match.guestTeam.name, score: match.guestTeam.score+1 }};
     const [inputValues, setInputValues] = useState(initialScore);
 
     // force state to update on match change
