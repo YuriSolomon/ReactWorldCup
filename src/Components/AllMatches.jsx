@@ -1,6 +1,7 @@
 import NewMatch from "./NewMatch";
 import MatchList from "./MatchList";
 import CurrentMatch from "./CurrentMatch";
+import MatchOptions from "./MatchOptions";
 
 import { useState } from "react";
 
@@ -121,12 +122,23 @@ export default function AllMatches() {
 
     return (
         <div id="matches">
-            <div id="left-column">
-                <CurrentMatch onUpdate={handleUpdate} match={selectedMatch} onFinish={handleFinish} />
+            {!selectedMatch && <h2>No active matches</h2>}
+            <div className="row">
+                <div id="left-column">
+                    <CurrentMatch match={selectedMatch} />
+                </div>
+                <div id="right-column">
+                    <MatchList matchList={matchList} onSelect={updateSelect} />
+                </div>
             </div>
-            <div id="right-column">
-                <MatchList matchList={matchList} onSelect={updateSelect} />
-                <NewMatch onCreate={handleCreate} matchList={matchList} />
+
+            <div className="row">
+                <div id="left-column" className={!selectedMatch ? 'noMatch' : ''}>
+                    <MatchOptions onUpdate={handleUpdate} match={selectedMatch} onFinish={handleFinish} />
+                </div>
+                <div id="right-column">
+                    <NewMatch onCreate={handleCreate} matchList={matchList} />
+                </div>
             </div>
         </div>
     )

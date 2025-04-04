@@ -1,7 +1,6 @@
 import Team from "./Team";
-import MatchOptions from "./MatchOptions";
 
-export default function CurrentMatch({ onUpdate, match, onFinish }) {
+export default function CurrentMatch({match }) {
     return (
         <>
             {match && (<div id="current-match-wrapper">
@@ -11,9 +10,7 @@ export default function CurrentMatch({ onUpdate, match, onFinish }) {
                     <p>VS.</p>
                     <p className="team-info"><span>Guest team</span> <Team team={match.guestTeam} /></p>
                 </div>
-                <MatchOptions onUpdate={onUpdate} match={match} onFinish={onFinish} />
             </div>)}
-            {!match && <p>No active matches</p>}
         </>
     )
 }
