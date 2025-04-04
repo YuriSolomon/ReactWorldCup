@@ -37,6 +37,7 @@ export default function MatchList({ matchList, onSelect }) {
                             </span>
                         ))}
                     </ol>
+                    <span className="instruction">Click a match for more details</span>
                 </div>
             )}
         </>

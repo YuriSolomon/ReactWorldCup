@@ -132,6 +132,7 @@ body {
   display: flex;
   align-items: center;
   flex-direction: column;
+  position: relative;
 }
 
 #match-list {
@@ -146,4 +147,10 @@ body {
   border: none;
   cursor: pointer;
   padding: 5px 0;
+}
+
+.instruction {
+  position: absolute;
+  font-size: 12px;
+  bottom: -20px;
 }

@@ -50,7 +50,6 @@ test('update match score', () => { // sample data is needed for this, as .type()
 });
 */
 
-
 test('finish a game', async () => {
   render(<App />); // change component
   const currentMatchHomeTeam = screen.getByTestId('Spain6');
