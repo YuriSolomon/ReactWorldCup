@@ -14,10 +14,10 @@ test('page had a header text', () => {
 
 test('start a match', async () => {
   render(<App />);
-// userEvent.type(inputGuestTeam, 'Team 1') not working for some reason. a lot of complaints online, no solution yet
-  const createButton = screen.getByText('Create new match');
+  // userEvent.type(inputGuestTeam, 'Team 1') not working for some reason. a lot of complaints online, no solution yet
+  const createButton = screen.getByText('Start a new match');
   userEvent.click(createButton);
-  expect(screen.getByText('Home team: Team 1: 0')).toBeInTheDocument();
+  expect(screen.getByTestId('Team 10')).toBeInTheDocument();
 });
 
 /* example to how I would use testing if I could type a value into inputs
@@ -26,7 +26,7 @@ test('update match score', () => { // sample data is needed for this, as .type()
   render(<App />);
   const inputHomeTeam = screen.getByTitle('homeTeam');
   const inputGuestTeam = screen.getByTitle('guestTeam');
-  const createButton = screen.getByText('Create new match');
+  const createButton = screen.getByText('Start a new match');
   userEvent.type(inputHomeTeam, "Team 1")
   userEvent.type(inputGuestTeam, "Team 2")
   userEvent.click(createButton);
@@ -52,10 +52,10 @@ test('update match score', () => { // sample data is needed for this, as .type()
 
 test('finish a game', async () => {
   render(<App />); // change component
-  const currentMatch = screen.getByText('Home team: Spain: 6');
+  const currentMatchHomeTeam = screen.getByTestId('Spain6');
   const finishButton = screen.getByText('Finish match');
   userEvent.click(finishButton);
-  expect(currentMatch).not.toBe(<p>Home team: Uruguay: 2</p>); // should be first item on the list
+  expect(currentMatchHomeTeam).not.toBe(<span data-testid="Spain6">Spain6: </span>)
 });
 
 // for the next 2 tests I created the sample data in an order than needs to be sorted
@@ -64,18 +64,18 @@ test('finish a game', async () => {
 
 test('sort matches by score', () => {
   render(<App />);
-  const createButton = screen.getByText('Create new match');
+  const createButton = screen.getByText('Start a new match');
   userEvent.click(createButton);
-  const match1 = screen.getByText('Mexico: 6 - Canada: 10');
-  const match2 = screen.getByText('Spain: 6 - Brazil: 6');
+  const match1 = screen.getByTestId('MexicoCanada');
+  const match2 = screen.getByTestId('SpainBrazil');
   expect(match1.compareDocumentPosition(match2)).toBe(4);
 });
 
 test('sort matches by time', () => {
   render(<App />);
-  const createButton = screen.getByText('Create new match');
+  const createButton = screen.getByText('Start a new match');
   userEvent.click(createButton);
-  const match1 = screen.getByText('Uruguay: 2 - Italy: 10');
-  const match2 = screen.getByText('Spain: 6 - Brazil: 6');
+  const match1 = screen.getByTestId('UruguayItaly');
+  const match2 = screen.getByTestId('SpainBrazil');
   expect(match1.compareDocumentPosition(match2)).toBe(4);
 });
