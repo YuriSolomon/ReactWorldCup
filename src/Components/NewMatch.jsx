@@ -2,10 +2,10 @@ import Input from "./Input";
 
 import { useState } from "react";
 
-export default function NewMatch({onCreate, matchList}) {
-    const [inputValues, setInputValues] = useState({homeTeam: 'Team 1', guestTeam: 'Team 2'});
+export default function NewMatch({ onCreate, matchList }) {
+    const [inputValues, setInputValues] = useState({ homeTeam: 'Team 1', guestTeam: 'Team 2' });
 
-    function handleChange(key ,value) {
+    function handleChange(key, value) {
         setInputValues(prevInputValues => {
             return {
                 ...prevInputValues,
@@ -15,7 +15,7 @@ export default function NewMatch({onCreate, matchList}) {
     }
 
     function handleClick() {
-        const valueIsEmpty = inputValues.homeTeam !== '' && inputValues.guestTeam !== '' && inputValues.homeTeam !== inputValues.guestTeam;
+        const valueIsNotEmpty = inputValues.homeTeam !== '' && inputValues.guestTeam !== '' && inputValues.homeTeam !== inputValues.guestTeam;
         let matchExists = false;
         for (let i = 0; i < matchList.length; i++) {
             const match = matchList[i];
@@ -26,7 +26,7 @@ export default function NewMatch({onCreate, matchList}) {
                 matchExists = true
             }
         }
-        if (valueIsEmpty && !matchExists) {
+        if (valueIsNotEmpty && !matchExists) {
             setInputValues(() => { return { homeTeam: '', guestTeam: '' } });
             onCreate(inputValues.homeTeam, inputValues.guestTeam);
         }
