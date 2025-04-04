@@ -44,11 +44,12 @@ test('update match score', () => { // sample data is needed for this, as .type()
 /*
 test('update match score', () => { // sample data is needed for this, as .type() is not working
   render(<App />);
-  const updateButton = screen.getByText('Update match scores');
+  const updateButton = screen.getByText('Update match');
   userEvent.click(updateButton);
-  expect('Team 1: 3').toBeInTheDocument();
+  expect(screen.getByTestId('Spain7')).toBeInTheDocument();
 });
 */
+
 
 test('finish a game', async () => {
   render(<App />); // change component
