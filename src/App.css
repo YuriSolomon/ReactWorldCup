@@ -6,3 +6,132 @@ body {
   width: 70px;
   margin-top: 25px;
 }
+
+#matches {
+  display: flex;
+}
+
+#left-column,
+#right-column {
+  width: 100%;
+  max-width: 50%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+#current-match {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  background-color: #aaa;
+}
+
+#current-match-wrapper h3 {
+  margin-top: 40px;
+}
+
+#current-match .team-info {
+  flex-direction: column;
+  display: flex;
+  margin: 30px;
+}
+
+#current-match p span:nth-child(2) {
+  text-decoration: underline;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+#update-match,
+#new-match {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+#update-match .input,
+#new-match .input {
+  display: flex;
+  flex-direction: column;
+  margin: 0 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+#update-match input,
+#new-match input {
+  width: 30px;
+  padding: 7px 0px 5px 15px;
+  text-align: center;
+  border: none;
+  border-bottom: 1px solid black;
+  border-radius: 5px;
+  margin: 10px 0px;
+}
+
+#update-match .button {
+  position: absolute;
+  left: 50%;
+  bottom: -41px;
+  transform: translateX(-140px);
+}
+
+
+#new-match label {
+  margin-top: 10px;
+}
+
+#new-match input {
+  width: 125px;
+  padding: 7px 0 5px 0;
+}
+
+#new-match h3 {
+  width: 100%;
+}
+
+#new-match .button {
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translate(220px, 50%);
+}
+
+.button {
+  padding: 6px 12px;
+  border-radius: 16px;
+  background: transparent;
+  border: 2px solid black;
+  cursor: pointer;
+}
+
+.button-finish {
+  border-color: #740000;
+  color: #740000;
+  transform: translateX(80px);
+  margin: 10px 10px 65px 10px;
+}
+
+#match-list-wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+#match-list {
+  text-align: center;
+  width: 40%;
+  padding-right: 40px;
+}
+
+#match-list button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 5px 0;
+}

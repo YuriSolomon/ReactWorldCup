@@ -125,8 +125,8 @@ export default function AllMatches() {
                 <CurrentMatch onUpdate={handleUpdate} match={selectedMatch} onFinish={handleFinish} />
             </div>
             <div id="right-column">
-                <NewMatch onCreate={handleCreate} matchList={matchList} />
                 <MatchList matchList={matchList} onSelect={updateSelect} />
+                <NewMatch onCreate={handleCreate} matchList={matchList} />
             </div>
         </div>
     )

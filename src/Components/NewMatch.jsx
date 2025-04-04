@@ -34,9 +34,10 @@ export default function NewMatch({onCreate, matchList}) {
 
     return (
         <div id="new-match">
+            <h3>Start a new match</h3>
             <Input label='Home team' title='homeTeam' value={inputValues.homeTeam} onChange={(event) => handleChange('homeTeam', event.target.value)} />
             <Input label='Guest team' title='guestTeam' value={inputValues.guestTeam} onChange={(event) => handleChange('guestTeam', event.target.value)} />
-            <button className="button" onClick={() => handleClick()}>Start a new match</button>
+            <button className="button" onClick={() => handleClick()}>Start</button>
         </div>
     )
 }

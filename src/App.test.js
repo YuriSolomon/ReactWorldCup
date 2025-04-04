@@ -15,7 +15,7 @@ test('page had a header text', () => {
 test('start a match', async () => {
   render(<App />);
   // userEvent.type(inputGuestTeam, 'Team 1') not working for some reason. a lot of complaints online, no solution yet
-  const createButton = screen.getByText('Start a new match');
+  const createButton = screen.getByText('Start');
   userEvent.click(createButton);
   expect(screen.getByTestId('Team 10')).toBeInTheDocument();
 });
@@ -26,7 +26,7 @@ test('update match score', () => { // sample data is needed for this, as .type()
   render(<App />);
   const inputHomeTeam = screen.getByTitle('homeTeam');
   const inputGuestTeam = screen.getByTitle('guestTeam');
-  const createButton = screen.getByText('Start a new match');
+  const createButton = screen.getByText('Start');
   userEvent.type(inputHomeTeam, "Team 1")
   userEvent.type(inputGuestTeam, "Team 2")
   userEvent.click(createButton);
@@ -64,7 +64,7 @@ test('finish a game', async () => {
 
 test('sort matches by score', () => {
   render(<App />);
-  const createButton = screen.getByText('Start a new match');
+  const createButton = screen.getByText('Start');
   userEvent.click(createButton);
   const match1 = screen.getByTestId('MexicoCanada');
   const match2 = screen.getByTestId('SpainBrazil');
@@ -73,7 +73,7 @@ test('sort matches by score', () => {
 
 test('sort matches by time', () => {
   render(<App />);
-  const createButton = screen.getByText('Start a new match');
+  const createButton = screen.getByText('Start');
   userEvent.click(createButton);
   const match1 = screen.getByTestId('UruguayItaly');
   const match2 = screen.getByTestId('SpainBrazil');

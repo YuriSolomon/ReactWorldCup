@@ -5,6 +5,7 @@ export default function CurrentMatch({ onUpdate, match, onFinish }) {
     return (
         <>
             {match && (<div id="current-match-wrapper">
+                <h2>About match</h2>
                 <div id="current-match" data-testid="current-match">
                     <p className="team-info"><span>Home team</span> <Team team={match.homeTeam} /></p>
                     <p>VS.</p>

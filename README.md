@@ -55,7 +55,7 @@ assumption or things you would like to mention to us about your solution.
 You are working in a sports data company, and we would like you to develop a new Live Football
 World Cup Scoreboard library that shows all the ongoing matches and their scores.
 The scoreboard supports the following operations:
-1. Start a new match, assuming initial score 0 – 0 and adding it the scoreboard.
+1. Start, assuming initial score 0 – 0 and adding it the scoreboard.
 This should capture following parameters:
 a. Home team
 b. Away team
