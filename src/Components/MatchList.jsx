@@ -11,7 +11,7 @@ export default function MatchList({ matchList, onSelect }) {
                 <span key={index}>
                     {(match.active && !match.selected) && (
                         <li>
-                            <button onClick={(event) => onSelect(match)}>
+                            <button data-testid={match.homeTeam.name+match.guestTeam.name} onClick={(event) => onSelect(match)}>
                                 <Team team={match.homeTeam} /> - <Team team={match.guestTeam} />
                             </button>
                         </li>

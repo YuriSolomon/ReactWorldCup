@@ -120,10 +120,14 @@ export default function AllMatches() {
     }
 
     return (
-        <div id="match-list">
-            <CurrentMatch onUpdate={handleUpdate} match={selectedMatch} onFinish={handleFinish} />
-            <NewMatch onCreate={handleCreate} matchList={matchList} />
-            <MatchList matchList={matchList} onSelect={updateSelect} />
+        <div id="matches">
+            <div id="left-column">
+                <CurrentMatch onUpdate={handleUpdate} match={selectedMatch} onFinish={handleFinish} />
+            </div>
+            <div id="right-column">
+                <NewMatch onCreate={handleCreate} matchList={matchList} />
+                <MatchList matchList={matchList} onSelect={updateSelect} />
+            </div>
         </div>
     )
 }

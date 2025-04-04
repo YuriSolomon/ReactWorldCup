@@ -4,7 +4,7 @@ export default function MatchOptions({onUpdate, match, onFinish}) {
     return (
         <>
             <UpdateScores onUpdate={onUpdate} match={match}/>
-            <button onClick={() => onFinish(match)}>Finish match</button>
+            <button className="button button-finish" onClick={() => onFinish(match)}>Finish match</button>
         </>
     )
 }
