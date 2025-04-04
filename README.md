@@ -1,4 +1,4 @@
-# To run the project
+### To run the project
 Run npm install and then npm start.
 Run npm test to run the tests.
 
@@ -6,25 +6,41 @@ http://localhost:3000/
 
 # My notes
 
-Why am I using react for this coding excercise?
+### Pre coding
+Why am I using react for this coding exercise?
 I chose react because I started learning it for the first time.
-I bought a 71.5 hours react course on Udemy and went through only 8 hours of video.
-I chose to use react for this project, to show my ability to learn and develope my skills,
+I bought a 71.5-hour react course on Udemy and went through only 8 hours of video.
+I chose to use react for this project, to show my ability to learn and develop my skills,
 and to show how much progress I am making in such a short time, starting from scratch and
-buidling my knowledge up.
-I am sure this project will not have the best results, the most efficiant code, or the best
-solutions. But I hope chosing react for this will show the potencial I have.
+building my knowledge up.
+I am sure this project will not have the best results, the most efficient code, or the best
+solutions. But I hope choosing react for this will show the potential I have.
 
-I found an issue with testing library.
+### During coding
+I found an issue with the testing library.
 `userEvent.type(input, 'value');` is not working and not updating the value.
 `fireEvent.change(input, {target: {value: 'example'}});` also didn't work.
 I have tried to upgrade testing-library/user-event to V14.6.1 with no success.
-I have tried playing with several testing libraries versions with no success.
-This caused me to rethink my appproach and change it.
-However, due to the requirement to give a pair of absolut scores to update score,
+I have tried playing with several testing library versions with no success.
+This caused me to rethink my approach and change it.
+However, due to the requirement to give a pair of absolute scores to update the score,
 I have to keep the input fields and cannot change to a button that will increment the score.
-Thus, the test for updating score will be commented out. I will however put a comment in the code,
-to hard code input values in order to run this test. This is not a good practice, but with the testing issues there is not much else I can do.
+Thus, the test for updating the score will be commented out. I will however put a comment in the code,
+to hard code input values in order to run this test. This is not a good practice, but with the testing issues, there is not much else I can do.
+
+### Post coding
+This exercise was fun to work on. I learned new things and approaches to using React and
+see I definately have a lot more to learn.
+It was fun to challenge myself with a completely new tech and see how much I learned.
+I am not sure I worked through OO design and SOLID principles, but I did my best with the knowledge
+I currently have.
+I am however 100% sure more practice is needed and I have to learn how to use those principles
+correctly with Reach.
+As for testing, I came through some issues and a lot of changes during the project, yet I tried to
+update the test file before writing the new code.
+When starting the project I was 100% react-focused and did not think of styling, which caused template
+and structure changes that forced me to update the tests as well. I believe this will not be an issue
+while working on a real project, an UI design is provided and being considered beforehand.
 
 # Instructions:
 
